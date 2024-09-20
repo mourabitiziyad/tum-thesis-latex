@@ -3,93 +3,110 @@
 
 \chapter{Introduction}\label{chapter:introduction}
 
-\section{Section}
-Citation test~\parencite{latex}.
+\section{Background}
 
-Acronyms must be added in \texttt{main.tex} and are referenced using macros. The first occurrence is automatically replaced with the long version of the acronym, while all subsequent usages use the abbreviation.
+Photovoltaic (PV) detection through remote sensing is significant due to its potential for efficient monitoring and assessment of solar installations. High-resolution aerial imagery, such as 40\,cm resolution images, provides precise detection results; however, this type of imagery is often limited in availability and expensive, making it impractical for widespread use across various regions. Conversely, satellite imagery, available abundantly and at a lower cost, typically suffers from lower resolution (e.g., 10\,m resolution), which poses challenges for accurate PV detection.
 
-E.g. \texttt{\textbackslash ac\{TUM\}, \textbackslash ac\{TUM\}} $\Rightarrow$ \ac{TUM}, \ac{TUM}
+Recent advancements in generative AI, particularly in super-resolution techniques like Generative Adversarial Networks (GANs), ResNet, and Super-Resolution Convolutional Neural Networks (SRCNN), offer promising solutions. These models can enhance the resolution of images, potentially bridging the gap between low-resolution satellite data and the requirements for accurate PV detection.
 
-For more details, see the documentation of the \texttt{acronym} package\footnote{\url{https://ctan.org/pkg/acronym}}.
-\subsection{Subsection}
+\section{Problem Statement}
 
-See~\autoref{tab:sample}, \autoref{fig:sample-drawing}, \autoref{fig:sample-plot}, \autoref{fig:sample-listing}.
+The main challenge addressed in this thesis is the limitation posed by low-resolution satellite imagery for accurate PV detection. There is a need for a cost-effective method to enhance the resolution of readily available satellite images to match the detection capabilities of high-resolution aerial imagery.
+
+\section{Objective}
+
+The primary goal is to demonstrate the feasibility and effectiveness of using generative AI to produce high-quality super-resolution images from low-resolution satellite imagery, focusing on different regions in Germany where both high-resolution aerial and low-resolution satellite images are available.
+
+\chapter{Methodology}\label{chapter:methodology}
+
+The project will start with acquiring and preparing 40cm resolution aerial pictures and 10m resolution satellite images for specific German locations. Advanced generative AI techniques will be used to create synthetic SR images from low-resolution satellite data. These generated SR pictures will then be assessed using standard image quality metrics. PV segmentation will be applied to both the original low-resolution and synthetic SR pictures. By comparing these segmentation results, the study aims to validate the cost-effectiveness of synthetic SR images as a practical, cost-effective, and accessible alternative to high-resolution aerial imagery for PV detection. This highlights the potential of generative AI in improving remote sensing applications for renewable energy monitoring.
+
+\section{Research Review}
+
+A comprehensive literature review will be conducted to understand the current state-of-the-art in super-resolution techniques using generative AI, PV detection methods, and applications in remote sensing.
+
+\section{Preprocessing and Data Preparation}
+
+\begin{itemize}
+  \item Collect 40\,cm resolution aerial images and corresponding 10\,m resolution satellite images for selected regions in Germany.
+  \item Align images spatially and temporally to ensure consistency.
+  \item Normalize and resample data as required for model compatibility.
+\end{itemize}
+
+\section{Generative ML Model Development}
+
+\begin{itemize}
+  \item Implement and train generative models such as GANs (e.g., SRGAN), ResNet, and SRCNN.
+  \item Experiment with different architectures to optimize performance.
+  \item Use high-resolution images as ground truth and low-resolution images as input.
+  \item Employ loss functions suitable for super-resolution tasks.
+\end{itemize}
+
+\section{Production of Super-Resolution Images}
+
+Generate synthetic super-resolution images from the low-resolution satellite data using the developed models.
+
+\section{Define Evaluation Metrics}
+
+Define appropriate metrics to evaluate the performance of the ML model, such as PSNR and SSIM.
+
+\section{Experimental Design and Execution}
+
+Design and execute experiments to evaluate the generated super-resolution images, including:
+
+\begin{itemize}
+  \item Quantitative assessment using the defined metrics.
+  \item Qualitative visual inspection.
+\end{itemize}
+
+\section{Analysis and Results}
+
+Use the super-resolution images to detect PV installations by applying state-of-the-art PV segmentation algorithms.
+
+\section{Discussion and Interpretation}
+
+Discuss the implications of PV segmentation using super-resolution images derived from low-resolution satellite data, including effectiveness and potential limitations.
+
+\section{Recommendations and Conclusion}
+
+Summarize key findings, provide recommendations for future research, and conclude the study.
+
+\chapter{Timeline}\label{chapter:timeline}
+
+This timeline constitutes a tentative outlook for this thesis. The tasks are subject to change based on the research progress and requirements.
 
 \begin{table}[htpb]
-  \caption[Example table]{An example for a simple table.}\label{tab:sample}
+  \caption[Thesis Timeline]{An overview of the planned thesis timeline.}\label{tab:timeline}
   \centering
-  \begin{tabular}{l l l l}
+  \begin{tabular}{ll}
     \toprule
-      A & B & C & D \\
+    \textbf{Task} & \textbf{Duration} \\
     \midrule
-      1 & 2 & 1 & 2 \\
-      2 & 3 & 2 & 3 \\
+    Literature Review & Month 1 \\
+    Data Acquisition and Preparation & Month 2-3 \\
+    Experimental Design and Execution from Literature & Month 4-5 \\
+    Analysis, Reports, and Overall Results & Month 6 \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\begin{figure}[htpb]
-  \centering
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}[node distance=3cm]
-    \node (R0) {$R_1$};
-    \node (R1) [right of=R0] {$R_2$};
-    \node (R2) [below of=R1] {$R_4$};
-    \node (R3) [below of=R0] {$R_3$};
-    \node (R4) [right of=R1] {$R_5$};
+\chapter{Conclusion}\label{chapter:conclusion}
 
-    \path[every node]
-      (R0) edge (R1)
-      (R0) edge (R3)
-      (R3) edge (R2)
-      (R2) edge (R1)
-      (R1) edge (R4);
-  \end{tikzpicture}
-  \caption[Example drawing]{An example for a simple drawing.}\label{fig:sample-drawing}
-\end{figure}
+This thesis seeks to address a significant gap in the field of remote sensing for renewable energy applications. By enhancing low-resolution satellite imagery using generative AI, the research has the potential to revolutionize PV detection processes, making them more accessible and cost-effective.
 
-\begin{figure}[htpb]
-  \centering
+% \chapter{References}\label{chapter:references}
 
-  \pgfplotstableset{col sep=&, row sep=\\}
-  % This should probably go into a file in data/
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1000 \\
-    2 & 1500 \\
-    3 & 1600 \\
-  }\exampleA
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1200 \\
-    2 & 800 \\
-    3 & 1400 \\
-  }\exampleB
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}
-    \begin{axis}[
-        ymin=0,
-        legend style={legend pos=south east},
-        grid,
-        thick,
-        ylabel=Y,
-        xlabel=X
-      ]
-      \addplot table[x=a, y=b]{\exampleA};
-      \addlegendentry{Example A}
-      \addplot table[x=a, y=b]{\exampleB};
-      \addlegendentry{Example B}
-    \end{axis}
-  \end{tikzpicture}
-  \caption[Example plot]{An example for a simple plot.}\label{fig:sample-plot}
-\end{figure}
+% \begin{thebibliography}{9}
 
-\begin{figure}[htpb]
-  \centering
-  \begin{tabular}{c}
-  \begin{lstlisting}[language=SQL]
-    SELECT * FROM tbl WHERE tbl.str = "str"
-  \end{lstlisting}
-  \end{tabular}
-  \caption[Example listing]{An example for a source code listing.}\label{fig:sample-listing}
-\end{figure}
+% \bibitem{SRCNN}
+% Dong, C., Loy, C.~C., He, K., \& Tang, X. (2016). \emph{Image Super-Resolution Using Deep Convolutional Networks}. IEEE Transactions on Pattern Analysis and Machine Intelligence, 38(2), 295--307.
+
+% \bibitem{SRGAN}
+% Ledig, C., Theis, L., Huszár, F., \emph{et al.} (2017). \emph{Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network}. In \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition} (pp. 4681--4690).
+
+% \bibitem{RDN}
+% Zhang, Y., Tian, Y., Kong, Y., Zhong, B., \& Fu, Y. (2018). \emph{Residual Dense Network for Image Super-Resolution}. In \emph{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition} (pp. 2472--2481).
+
+% \end{thebibliography}
+
+\end{document}
